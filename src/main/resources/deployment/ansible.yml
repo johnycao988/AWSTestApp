@@ -1,0 +1,30 @@
+---
+- hosts: webservers
+  remote_user: jenkins
+  tasks:
+     
+  - name: Remove Cloud config service container ...
+    shell: docker rm -f cloud.config.service
+    ignore_errors: yes
+
+  - name: Remove Cloud config service image ...
+    shell: docker rmi -f cloud.config.service
+    ignore_errors: yes
+  
+  - name: Create temp folder ...
+    shell: mkdir /home/jenkins/cloud.config.service.tmp
+    ignore_errors: yes
+    
+  - name: Copy Cloud config service jar ...
+    copy: src=cloud.config.service-1.0.jar dest=/home/jenkins/cloud.config.service.tmp
+  
+  - name: Copy Cloud config service Dockerfile ...
+    copy: src=Dockerfile dest=/home/jenkins/cloud.config.service.tmp
+  
+  - name: Build Cloud config service image ...
+    shell: cd /home/jenkins/cloud.config.service.tmp && docker build -t cloud.config.service .
+  
+  - name: Run Cloud config service containers...
+    shell: docker run -d -v /cloud.config:/cloud.config --name cloud.config.service -p 3080:3080 -e CLOUD.CONFIG.SERVICE.AUTH.CODE=config.auth.code:001  --restart=always cloud.config.service
+
+ 
