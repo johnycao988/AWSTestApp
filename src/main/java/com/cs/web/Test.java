@@ -17,12 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 public class Test extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 * 
-	 * 
-	 */
-
 	private String serverInfo = "";
 
 	public Test() throws UnknownHostException {
