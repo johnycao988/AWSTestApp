@@ -1,4 +1,4 @@
-FROM docker.registry.cscloud.com/centos/tomcat-jdk8
+FROM docker.registry.cscloud.com/centos/tomcat-jdk8:2.0
 MAINTAINER johnnycao@chinasystems.com
 #copy jdk and tomcat into image
 ARG AWS_APP_VERSION
