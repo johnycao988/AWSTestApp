@@ -6,4 +6,4 @@ echo "build aws test app war.."
 
 mvn package
 
-ls ./target/aws-test-${AWS_APP_VERSION}.war
+docker build --build-arg AWS_APP_VERSION=$AWS_APP_VERSION  -t Aws-test-app1:$AWS_APP_VERSION
