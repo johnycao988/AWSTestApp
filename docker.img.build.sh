@@ -1,6 +1,6 @@
 #! /bin/sh
 
-export AWS_APP_VERSION="2.0"
+export AWS_APP_VERSION="1.0"
 
 echo "build aws test app war.."
 
